@@ -21,12 +21,39 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/app-assets",
+              "src/libraries"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/app-assets/css/bootstrap.css",
+              "src/app-assets/fonts/icomoon.css",
+              "src/app-assets/fonts/flag-icon-css/css/flag-icon.min.css",
+              "src/app-assets/vendors/css/extensions/pace.css",
+              "src/app-assets/css/bootstrap-extended.css",
+              "src/app-assets/css/app.css",
+              "src/app-assets/css/colors.css",
+              "src/app-assets/css/core/menu/menu-types/vertical-menu.css",
+              "src/app-assets/css/core/menu/menu-types/vertical-overlay-menu.css",
+              "src/app-assets/css/core/colors/palette-gradient.css",
+              "src/assets/css/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/app-assets/js/core/libraries/jquery.min.js",
+              "src/app-assets/vendors/js/ui/tether.min.js",
+              "src/app-assets/js/core/libraries/bootstrap.min.js",
+              "src/app-assets/vendors/js/ui/perfect-scrollbar.jquery.min.js",
+              "src/app-assets/vendors/js/ui/unison.min.js",
+              "src/app-assets/vendors/js/ui/blockUI.min.js",
+              "src/app-assets/vendors/js/ui/jquery.matchHeight-min.js",
+              "src/app-assets/vendors/js/ui/screenfull.min.js",
+              "src/app-assets/vendors/js/extensions/pace.min.js",
+              "src/app-assets/vendors/js/charts/chart.min.js",
+              "src/app-assets/js/core/app-menu.js",
+              "src/app-assets/js/core/app.js",
+              "src/app-assets/js/scripts/pages/dashboard-lite.js"
+            ]
           },
           "configurations": {
             "production": {

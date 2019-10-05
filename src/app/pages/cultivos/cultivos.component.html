@@ -1,0 +1,303 @@
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Configuración de cultivos</h2>
+                        </div>
+                        <div class="card-body collapse in">
+                            <div class="table-responsive">
+                                <!-- <table class="table">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Estatus</th>
+                                            <th>Fecha de inicio</th>
+                                            <th>Fecha de fin</th>
+                                            <th>Peces iniciales</th>
+                                            <th>Peces actuales</th>
+                                            <th>Lecturas/min</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let cultivo of cultivosService.cultivos">
+                                            <th scope="row" style="width: 1%">{{cultivo.indice}}</th>
+                                            <td>
+                                                <div *ngIf="cultivo.estatus" class="tag tag-success">Activo</div>
+                                                <div *ngIf="!cultivo.estatus" class="tag tag-danger">Inactivo</div>
+                                            </td>
+                                            <td>{{cultivo.fechaInicio}}</td>
+                                            <td>{{cultivo.fechaFin}}</td>
+                                            <td>{{cultivo.pecesInicio}}</td>
+                                            <td>{{cultivo.pecesActual}}</td>
+                                            <td>{{cultivo.tiempoLectura}}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <button type="button" class="btn btn-outline-success btn-sm"
+                                                            data-toggle="tooltip" data-placement="bottom" title=""
+                                                            data-original-title="Editar"
+                                                            (click)="open(content, ' Editar cultivo',cultivo.identificador, 'M')"
+                                                            style="margin-right: 2px">
+                                                            <i class="icon-ios-gear"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button type="button" class="btn btn-outline-info btn-sm"
+                                                            data-toggle="tooltip" data-placement="bottom" title=""
+                                                            data-original-title="Visualizar"
+                                                            (click)="open(content, ' Visualizar cultivo',cultivo.identificador, 'V')">
+                                                            <i class="icon-information-circled"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button *ngIf="cultivo.estatus" type="button"
+                                                            class="btn btn-outline-danger btn-sm" data-toggle="tooltip"
+                                                            data-placement="bottom" title=""
+                                                            (click)="cambiarEstatus(cultivo.identificador,!cultivo.estatus)"
+                                                            data-original-title="Inactivar">
+                                                            <i class="icon-android-arrow-down"></i>
+                                                        </button>
+                                                        <button *ngIf="!cultivo.estatus" type="button"
+                                                            class="btn btn-outline-secondary btn-sm"
+                                                            data-toggle="tooltip" data-placement="bottom" title=""
+                                                            (click)="cambiarEstatus(cultivo.identificador,!cultivo.estatus)"
+                                                            data-original-title="Activar">
+                                                            <i class="icon-android-arrow-up"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> -->
+                                <div class="example-container mat-elevation-z8">
+                                    <mat-table [dataSource]="dataSource" matSort>
+
+                                        <ng-container matColumnDef="indice">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header> No</mat-header-cell>
+                                            <mat-cell *matCellDef="let row"> {{row.indice}} </mat-cell>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="estatus">
+                                            <mat-header-cell *matHeaderCellDef> Estatus
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let row">
+                                                <div *ngIf="row.estatus" class="tag tag-success">Activo</div>
+                                                <div *ngIf="!row.estatus" class="tag tag-danger">Inactivo</div>
+                                            </mat-cell>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="fechaInicio">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de inicio
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let row"> {{row.fechaInicio}} </mat-cell>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="fechaFin">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de fin
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let row"> {{row.fechaFin}} </mat-cell>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="pecesInicio">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header> Peces Iniciales
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let row"> {{row.pecesInicio}} </mat-cell>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="pecesActual">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header> Peces Actuales
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let row"> {{row.pecesActual}} </mat-cell>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="tiempoLectura">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header> Tiempo de lectura/min
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let row"> {{row.tiempoLectura}} </mat-cell>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="botones">
+                                            <mat-header-cell *matHeaderCellDef> Acciones
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let row">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <button type="button" class="btn btn-outline-success btn-sm"
+                                                            data-toggle="tooltip" data-placement="bottom" title=""
+                                                            data-original-title="Editar"
+                                                            (click)="open(content, ' Editar cultivo',row.identificador, 'M')"
+                                                            style="margin-right: 2px">
+                                                            <i class="icon-ios-gear"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button type="button" class="btn btn-outline-info btn-sm"
+                                                            data-toggle="tooltip" data-placement="bottom" title=""
+                                                            data-original-title="Visualizar"
+                                                            (click)="open(content, ' Visualizar cultivo',row.identificador, 'V')">
+                                                            <i class="icon-information-circled"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button *ngIf="row.estatus" type="button"
+                                                            class="btn btn-outline-danger btn-sm" data-toggle="tooltip"
+                                                            data-placement="bottom" title=""
+                                                            (click)="cambiarEstatus(row.identificador,!row.estatus)"
+                                                            data-original-title="Inactivar">
+                                                            <i class="icon-android-arrow-down"></i>
+                                                        </button>
+                                                        <button *ngIf="!row.estatus" type="button"
+                                                            class="btn btn-outline-secondary btn-sm"
+                                                            data-toggle="tooltip" data-placement="bottom" title=""
+                                                            (click)="cambiarEstatus(row.identificador,!row.estatus)"
+                                                            data-original-title="Activar">
+                                                            <i class="icon-android-arrow-up"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </mat-cell>
+                                        </ng-container>
+
+                                        <mat-header-row *matHeaderRowDef="displayedColumns" class="encabezado">
+                                        </mat-header-row>
+                                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                    </mat-table>
+                                    
+                                </div>
+                                <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="25" [showFirstLastButtons]></mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-xs-8">
+                <h4 class="modal-title"><i class="icon-ios-toggle"></i>{{titulo}}</h4>
+            </div>
+            <div class="col-xs-4">
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="formCultivo" class="form">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="issueinput3">Fecha de inicio</label>
+                            <div class="position-relative has-icon-left">
+                                <input type="date" formControlName="fechaInicio" id="issueinput3" class="form-control"
+                                    data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                                    data-title="Fecha de inicio" data-original-title="" title="" required>
+                                <div class="form-control-position">
+                                    <i class="icon-android-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="issueinput4">Fecha de fin</label>
+                            <div class="position-relative has-icon-left">
+                                <input type="date" formControlName="fechaFin" id="issueinput4" class="form-control"
+                                    name="datefixed" data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                                    data-title="Fecha de fin" data-original-title="" title="" required>
+                                <div class="form-control-position">
+                                    <i class="icon-android-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="issueinput5">Estatus</label>
+                    <div class="position-relative has-icon-left">
+                        <select id="issueinput5" formControlName="estatus" name="priority" ng-model="selected"
+                            class="form-control" data-toggle="tooltip" disabled data-trigger="hover"
+                            data-placement="top" data-title="Priority" data-original-title="" title="">
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                        <div class="form-control-position">
+                            <i class="icon-arrow-swap"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="issueinput3">Peces iniciales</label>
+                            <div class="position-relative has-icon-left">
+                                <input type="number" formControlName="pecesInicio" min="1" id="issueinput3"
+                                    class="form-control" name="dateopened" data-toggle="tooltip" data-trigger="hover"
+                                    data-placement="top" data-title="Cantidad de peces" data-original-title="" title=""
+                                    required>
+                                <div class="form-control-position">
+                                    <i class="icon-hourglass-start"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="issueinput4">Peces actuales</label>
+                            <div class="position-relative has-icon-left">
+
+                                <input type="number" formControlName="pecesActual" min="0" id="issueinput4"
+                                    class="form-control" name="datefixed" data-toggle="tooltip" data-trigger="hover"
+                                    data-placement="top" data-title="Cantidad de peces" data-original-title="" title="">
+
+                                <div class="form-control-position">
+                                    <i class="icon-hourglass-2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="issueinput8">Tiempo de lectura/minuto</label>
+                    <div class="position-relative has-icon-left">
+                        <input type="number" formControlName="tiempoLectura" min="1" max="30" id="issueinput4"
+                            class="form-control" name="datefixed" data-toggle="tooltip" data-trigger="hover"
+                            data-placement="top" data-title="Tiempo de lectura" data-original-title="" title=""
+                            required>
+                        <div class="form-control-position">
+                            <i class="icon-clock-o"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <input *ngIf="mostrar" [disabled]="!formCultivo.valid" type="button"
+            class="btn btn-success btn-min-width mr-1 mb-1" (click)="guardado(formCultivo)" value="Guardar">
+
+        <button type="button" class="btn btn-danger btn-min-width mr-1 mb-1" (click)="modal.dismiss('Cross click')">
+            <i class="icon-cross2"></i> Cerrar
+        </button>
+
+    </div>
+</ng-template>
